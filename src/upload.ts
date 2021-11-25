@@ -29,6 +29,8 @@ const uploadFunction = (
     client.on("block", async (height: number) => {
       const block = await client.getBlockWithTransactions(height);
 
+      // @ts-ignore
+      delete block.extraData;
       if (block.transactions.length) {
         block.transactions.forEach(
           // @ts-ignore

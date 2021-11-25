@@ -30,6 +30,8 @@ const validateFunction = (
       logger.debug(`Found block. Hash = ${blockHash}`);
 
       const block = await client.getBlockWithTransactions(blockHash);
+      // @ts-ignore
+      delete block.extraData;
       if (block.transactions.length) {
         block.transactions.forEach(
           // @ts-ignore
